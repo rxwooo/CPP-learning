@@ -1,0 +1,12 @@
+int main()
+{
+	a = 10;
+
+	if ( a><0 ) 
+               {
+		return 0x123;
+	}
+	else{
+		return 0;
+	}
+}

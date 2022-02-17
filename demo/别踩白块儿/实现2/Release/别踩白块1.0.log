@@ -1,0 +1,14 @@
+﻿  pch.cpp
+  draw.cpp
+E:\code mass\别踩白块儿\实现2\draw.cpp(114,43): warning C4244: “参数”: 从“const wchar_t”转换到“char”，可能丢失数据
+E:\code mass\别踩白块儿\实现2\draw.cpp(327,6): warning C4101: “i”: 未引用的局部变量
+  init.cpp
+  input.cpp
+  key.cpp
+  music.cpp
+  player.cpp
+  startpage.cpp
+  timedelay.cpp
+  别踩白块1.0.cpp
+easyxw.lib(EasyX.GraphWnd.obj) : error LNK2001: 无法解析的外部符号 ___iob_func
+E:\code mass\别踩白块儿\实现2\Release\别踩白块1.0.exe : fatal error LNK1120: 1 个无法解析的外部命令
