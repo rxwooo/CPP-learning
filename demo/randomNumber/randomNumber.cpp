@@ -9,5 +9,5 @@ int main()
     int c=rand()%10+5;//生成一个5-14的随机数
 
     cout<<a<<" "<<b<<" "<<c<<endl;
-    
+    return 0;
 }

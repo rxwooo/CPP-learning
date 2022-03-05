@@ -3,7 +3,7 @@ using namespace std;
 
 void InsertionSort(int arr[]);
 
-void arr_swap(int arr[], int a, int b)
+void arrSwap(int arr[], int a, int b)
 {
     arr[a] = arr[a] ^ arr[b];
     arr[b] = arr[a] ^ arr[b];
@@ -13,6 +13,7 @@ void arr_swap(int arr[], int a, int b)
 template<class T>
 int length(T& arr)
 {
+    cout << sizeof(arr) << endl;
     return sizeof(arr)/sizeof(arr[0]);
 }
 
@@ -30,6 +31,6 @@ void InsertionSort(int arr[])
     for(int i = 0; i < len - 1; i++)
         for(int j = i; j > 0; j--)
             if(arr[i+1] < arr[i])
-                arr_swap(arr, i, i-1);
+                arrSwap(arr, i, i-1);
             else break;
 }
