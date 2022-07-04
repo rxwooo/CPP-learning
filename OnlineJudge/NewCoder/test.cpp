@@ -1,54 +1,99 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-int limit;
-unordered_map<int, unordered_map<int, int>> dpMap;
-
-int dfs(int pos, int base, vector<int> &vec)
+#include <stdio.h>
+#include <math.h>
+int main()
 {
-    if (pos == vec.size())
-        return 1;
-    int ans = 0;
-    vector<int> tp = {pos, base};
-    if (dpMap.find(pos) != dpMap.end())
-        if(dpMap[pos].find(base) != dpMap[pos].end())
-            return dpMap[pos][base];
-        else
-            dpMap[pos].insert({base, 0});
-    else {
-        unordered_map<int ,int> tp;
-        tp.insert({base, 0});
-        dpMap.insert({pos, tp});
-    }
-        
-    if (vec[pos] != 0)
-        if (vec[pos] < base)
-            ans = 0;
-        else
-            ans = dfs(pos + 1, max(base, vec[pos]), vec);
-    else
+    int num, i, A1 = 0, A2 = 0, s = 0, A3 = 0, A5 = 0;
+    double count = 0, sum = 0, A4;
+    char ch1, ch2, ch3, ch4, ch5;
+
+    scanf("%d", &num);
+    int a[num];
+    for (i = 0; i < num; i++)
     {
-        int now = base;
-        while (now <= limit)
+        scanf("%d", &a[i]);
+    }
+    for (i = 0; i < num; i++)
+    {
+        if (a[i] % 5 == 0 && a[i] % 2 == 0)
         {
-            int re = dfs(pos + 1, now, vec);
-            ans += re;
-            now++;
+            A1 = A1 + a[i];
         }
     }
-    dpMap[pos][base] = ans;
-    return ans;
-}
-
-int FillArray(vector<int> &a, int k)
-{
-    limit = k;
-    return dfs(0, 1, a);
-}
-
-int main()
-{   
-    vector<int> tp = {1, 0, 0};
-    cout << FillArray(tp, 3) << endl;
+    if (A1 == 0)
+    {
+        ch1 = 'N';
+        printf("%c ", ch1);
+    }
+    else
+    {
+        printf("%d ", A1);
+    }
+    for (i = 0; i < num; i++)
+    {
+        if (a[i] % 5 == 1)
+        {
+            A2 = A2 + pow(-1, s) * a[i];
+            s = s + 1;
+        }
+    }
+    if (A2 == 0)
+    {
+        ch2 = 'N';
+        printf("%c ", ch2);
+    }
+    else
+    {
+        printf("%d ", A2);
+    }
+    for (i = 0; i < num; i++)
+    {
+        if (a[i] % 5 == 2)
+        {
+            A3 = A3 + 1;
+        }
+    }
+    if (A3 == 0)
+    {
+        ch3 = 'N';
+        printf("%c ", ch3);
+    }
+    else
+    {
+        printf("%d ", A3);
+    }
+    for (i = 0; i < num; i++)
+    {
+        if (a[i] % 5 == 3)
+        {
+            sum = sum + a[i];
+            count = count + 1;
+        }
+    }
+    A4 = sum / count;
+    if (count == 0)
+    {
+        ch4 = 'N';
+        printf("%c ", ch4);
+    }
+    else
+    {
+        printf("%.1f ", A4);
+    }
+    for (i = 0; i < num; i++)
+    {
+        if (a[i] % 5 == 4)
+        {
+            A5 = (A5 > a[i]) ? A5 : a[i];
+        }
+    }
+    if (A5 == 0)
+    {
+        ch5 = 'N';
+        printf("%c", ch5);
+    }
+    else
+    {
+        printf("%d", A5);
+    }
     return 0;
 }
