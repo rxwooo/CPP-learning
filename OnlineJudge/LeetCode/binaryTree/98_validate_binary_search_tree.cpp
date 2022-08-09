@@ -13,32 +13,42 @@ struct TreeNode
 
 class Solution {
 public:
-    bool isValidBST(TreeNode *root)
-    {
+    bool isValidBST(TreeNode* root) {
         if(root == NULL)
-            return true;
-        vector<long long> valVec;
-        stack<TreeNode*> nodeStack;
-        TreeNode* cur = root;
-        while(cur != NULL || !nodeStack.empty())
+            return 1;
+        
+        int lastNum;
+        bool first = 1;
+        stack<TreeNode*> call;
+        call.push(root);
+        while(call.size())
         {
-            if(cur != NULL)
+            TreeNode* cur = call.top();
+            call.pop();
+            if(cur)
             {
-                nodeStack.push(cur);
-                cur = cur->left;
+                if(cur->left) call.push(cur->left);
+                call.push(cur);
+                call.push(NULL);
+                if(cur->right) call.push(cur->right);
             }
             else
             {
-                cur = nodeStack.top();
-                nodeStack.pop();
-                valVec.push_back(cur->val);
-                cur = cur->right;
+                int curNum = call.top()->val;
+                call.pop();
+                if(first)
+                {
+                    lastNum = curNum;
+                    first = 0;
+                }
+                else
+                {
+                    if(curNum >= lastNum) return 0;
+                    lastNum = curNum;
+                }
             }
         }
-        for(int i = 1; i < valVec.size(); i++)
-            if(valVec[i] <= valVec[i - 1])
-                return false;
-        return true;
+        return 1;
     }
 };
 
